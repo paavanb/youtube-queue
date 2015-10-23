@@ -3,9 +3,12 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream')
 
 gulp.task('browserify', function() {
-    return browserify('./src/app.js')
+    return browserify({
+                entries: './src/app.js',
+                extensions: ['.coffee']
+            })
             .bundle()
-            .pipe(source('bundle.js'))
-            .pipe(gulp.dest('./build/'))
+            .pipe(source('youtube-queue.js'))
+            .pipe(gulp.dest('./extension/js/'))
 })
 gulp.task('default', ['browserify'])
