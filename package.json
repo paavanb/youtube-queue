@@ -1,4 +1,5 @@
 {
+  "description": "Create on-the-fly video playlists and search YouTube while watching.",
   "browserify": {
     "transform": [
       "coffeeify"
