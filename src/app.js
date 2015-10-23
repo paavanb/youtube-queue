@@ -1,1 +1,3 @@
-module.exports = {"HERP": "derp"}
+VideoQueue = require('./coffee/views/queue')
+
+queue = new VideoQueue()
