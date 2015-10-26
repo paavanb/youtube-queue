@@ -1,3 +1,6 @@
-VideoQueue = require('./coffee/views/queue')
+QueueWidget = require('./coffee/views/queue')
 
-queue = new VideoQueue()
+widget = new QueueWidget({
+    "el": "body",
+    "append": true
+})
