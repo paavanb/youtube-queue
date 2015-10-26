@@ -1,5 +1,7 @@
 var browserify = require('browserify')
 var gulp = require('gulp');
+var watch = require('gulp-watch')
+var batch = require('gulp-batch')
 var uglify = require('gulp-uglify')
 var source = require('vinyl-source-stream')
 
@@ -15,6 +17,13 @@ gulp.task('browserify', function() {
             .pipe(gulp.dest('./extension/js/'))
 })
 
+gulp.task('watch', function() {
+    watch('./src/coffee/**/*.coffee', batch(function(events, done) {
+        gulp.start('browserify', done)
+    }))
+    // TODO Watch for material design changes
+})
+
 gulp.task('material-js', function() {
     return gulp.src('./node_modules/material-design-lite/material.js')
             .pipe(uglify())
@@ -28,4 +37,4 @@ gulp.task('material-css', function() {
 
 
 gulp.task('material', ['material-js', 'material-css'])
-gulp.task('default', ['browserify', 'material'])
+gulp.task('default', ['browserify', 'material', 'watch'])
