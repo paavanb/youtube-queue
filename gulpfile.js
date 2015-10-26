@@ -35,6 +35,8 @@ gulp.task('material-css', function() {
             .pipe(gulp.dest('./extension/css/'))
 })
 
+gulp.task('material', function() {
+    gulp.start('material-js', 'material-css')
+})
 
-gulp.task('material', ['material-js', 'material-css'])
 gulp.task('default', ['browserify', 'material', 'watch'])
