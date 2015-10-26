@@ -1,5 +1,8 @@
-class VideoQueue
-  constructor: () ->
-    alert('IT LIIIIIIIIIVES')
+Ractive = require("ractive")
 
-module.exports = VideoQueue
+class QueueWidget extends Ractive
+  template: require("../../templates/queue.html")
+  data:
+    message: "Script tags work!"
+
+module.exports = QueueWidget
