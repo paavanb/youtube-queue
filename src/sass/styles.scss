@@ -1,0 +1,20 @@
+.frozen-footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 2000000000;
+}
+
+.mdl-card {
+  &.queue-card {
+    min-height: 100px;
+    bottom: -80px;
+    transition: 0.5s;
+  }
+
+  &.queue-card:hover {
+    bottom: 0px;
+    transition: 0.5s;
+  }
+}
