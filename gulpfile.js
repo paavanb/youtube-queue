@@ -2,10 +2,10 @@ var browserify = require('browserify')
 var gulp = require('gulp');
 var watch = require('gulp-watch')
 var batch = require('gulp-batch')
+var sass = require('gulp-sass')
 var uglify = require('gulp-uglify')
 var source = require('vinyl-source-stream')
 
-// TODO: Rename "extension" directory to "dist"
 
 gulp.task('browserify', function() {
     return browserify({
@@ -18,10 +18,21 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('watch', function() {
-    watch('./src/coffee/**/*.coffee', batch(function(events, done) {
+    watch(['./src/coffee/**/*.coffee', 
+           './src/templates/**/*.html',
+           './src/**/*.js'], batch(function(events, done) {
         gulp.start('browserify', done)
     }))
+    watch('./src/sass/**/*.scss', batch(function(events, done) {
+        gulp.start('sass', done)
+    }))
     // TODO Watch for material design changes
+})
+
+gulp.task('sass', function() {
+    return gulp.src("./src/sass/*.scss")
+               .pipe(sass())
+               .pipe(gulp.dest('./extension/css/'))
 })
 
 gulp.task('material-js', function() {
@@ -39,4 +50,4 @@ gulp.task('material', function() {
     gulp.start('material-js', 'material-css')
 })
 
-gulp.task('default', ['browserify', 'material', 'watch'])
+gulp.task('default', ['browserify', 'sass', 'material', 'watch'])

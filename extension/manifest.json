@@ -10,7 +10,7 @@
             "js/material.js",
             "js/youtube-queue.js"
           ],
-          "css": ["css/material.css"]
+          "css": ["css/material.css", "css/styles.css"]
         }
     ]
 }
