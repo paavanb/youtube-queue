@@ -1,4 +1,4 @@
-QueueWidget = require('./coffee/views/queue')
+QueueWidget = require('./coffee/views/widget')
 
 widget = new QueueWidget({
     "el": "body",
