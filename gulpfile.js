@@ -4,6 +4,7 @@ var watch = require('gulp-watch')
 var batch = require('gulp-batch')
 var sass = require('gulp-sass')
 var uglify = require('gulp-uglify')
+var notify = require('gulp-notify')
 var source = require('vinyl-source-stream')
 
 
@@ -15,6 +16,7 @@ gulp.task('browserify', function() {
             .bundle()
             .pipe(source('youtube-queue.js'))
             .pipe(gulp.dest('./extension/js/'))
+            .pipe(notify("Task 'browserify' completed."))
 })
 
 gulp.task('watch', function() {
