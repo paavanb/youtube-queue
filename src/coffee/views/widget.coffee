@@ -1,7 +1,7 @@
 Ractive = require("ractive")
 
 class QueueWidget extends Ractive
-  template: require("../../templates/queue.html")
+  template: require("../../templates/widget.html")
   data:
     message: "Script tags work!"
 
