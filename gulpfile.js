@@ -35,6 +35,7 @@ gulp.task('sass', function() {
     return gulp.src("./src/sass/*.scss")
                .pipe(sass())
                .pipe(gulp.dest('./extension/css/'))
+               .pipe(notify("Task 'sass' completed.")
 })
 
 gulp.task('material-js', function() {
