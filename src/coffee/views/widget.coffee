@@ -1,8 +1,12 @@
 Ractive = require("ractive")
 
-class QueueWidget extends Ractive
+VideoQueue = require('./queue')
+
+# Must use Ractive.extend if we want components to work
+QueueWidget = Ractive.extend(
   template: require("../../templates/widget.html")
-  data:
-    message: "Script tags work!"
+  components:
+    videoqueue: VideoQueue
+)
 
 module.exports = QueueWidget

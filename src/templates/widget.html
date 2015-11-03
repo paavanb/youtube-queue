@@ -1,9 +1,12 @@
 <div class="mdl-card mdl-shadow--16dp queue-card frozen-footer">
-  <div>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-      <i class="material-icons">play_arrow</i>
-    </button>
-  </div>
-  <div id="video-container">
+  <div class="mdl-grid full-width">
+    <div class="mdl-cell mdl-cell--1-col">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+        <i class="material-icons">play_arrow</i>
+      </button>
+    </div>
+    <div id="video-container" class="mdl-cell mdl-cell--11-col">
+      <videoqueue />
+    </div>
   </div>
 </div>
