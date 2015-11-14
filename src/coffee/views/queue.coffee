@@ -1,10 +1,14 @@
 Ractive = require("ractive")
 
+VideoItem = require('coffee/views/video_item')
+
 # View that renders the current list of videos
 VideoQueue = Ractive.extend(
-  template: require("../../templates/queue.html")
+  template: require("templates/queue.html")
   isolated: true
-  data:
+  components:
+    videoitem: VideoItem
+  data: ->
     videos: []
 
   onrender: ->
@@ -18,10 +22,13 @@ VideoQueue = Ractive.extend(
       e.preventDefault()
     )
     @el.addEventListener("drop", (e) =>
-      @get('videos').push(e.dataTransfer.getData("text/uri-list"))
+      @add_video(e.dataTransfer.getData("text/uri-list"))
       # prevent default so the browser doesn't follow the link that was dropped
       e.preventDefault()
     )
+
+  add_video: (uri) ->
+    @get('videos').push(uri)
 )
 
 module.exports = VideoQueue
