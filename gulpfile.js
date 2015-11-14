@@ -11,7 +11,8 @@ var source = require('vinyl-source-stream')
 gulp.task('browserify', function() {
     return browserify({
                 entries: './src/app.js',
-                extensions: ['.coffee']
+                extensions: ['.coffee'],
+                paths: ['./src']
             })
             .bundle()
             .pipe(source('youtube-queue.js'))
@@ -35,7 +36,7 @@ gulp.task('sass', function() {
     return gulp.src("./src/sass/*.scss")
                .pipe(sass())
                .pipe(gulp.dest('./extension/css/'))
-               .pipe(notify("Task 'sass' completed.")
+               .pipe(notify("Task 'sass' completed."))
 })
 
 gulp.task('material-js', function() {
