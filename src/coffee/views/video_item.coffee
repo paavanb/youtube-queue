@@ -1,13 +1,17 @@
 Ractive = require("ractive")
+Backbone = require('backbone')
+BackboneAdaptor = require('ractive-adaptors-backbone')
+# The adaptor uses instanceof to check if it should be used, 
+#   which breaks if we give it the "copy" of Backbone that 
+#   we got using require(). That's why we pass in window.Backbone
+BackboneAdaptor.Backbone = window.Backbone
 
-VideoItem = Ractive.extend(
+VideoModel = require('coffee/models/video')
+
+VideoItemView = Ractive.extend(
   template: require("templates/video_item.html")
-  computed:
-    video_id: ->
-      # TODO What happens when match fails?
-      url_regex = /watch\?v=([A-Za-z0-9_-]+)$/
-      @get('url').match(url_regex)[1]
+  adaptors: [BackboneAdaptor]
 )
 
 
-module.exports = VideoItem
+module.exports = VideoItemView

@@ -18,6 +18,7 @@ class YoutubeAPI
           id: video_id
         })
     ).then((response) ->
+      # TODO If request fails?
       return new VideoModel(response.items[0]?.snippet)
     )
 
