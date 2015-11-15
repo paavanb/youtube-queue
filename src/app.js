@@ -1,6 +1,6 @@
 QueueWidget = require('./coffee/views/widget')
 
-widget = new QueueWidget({
+var widget = new QueueWidget({
     "el": "body",
     "append": true
 })
