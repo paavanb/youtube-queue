@@ -3,11 +3,24 @@
   "browserify": {
     "transform": [
       "coffeeify",
-      "ractivate"
+      "ractivate",
+      "browserify-shim"
     ]
+  },
+  "browser": {
+    "backbone": "./node_modules/backbone/backbone.js",
+    "underscore": "./node_modules/underscore/underscore.js",
+    "jquery": "./node_modules/jquery/dist/jquery.js"
+  },
+  "browserify-shim": {
+    "backbone": {
+        "exports": "Backbone",
+        "depends": ["jquery:$", "underscore:_"]
+    }
   },
   "devDependencies": {
     "browserify": "^11.2.0",
+    "browserify-shim": "^3.8.11",
     "coffeeify": "^1.1.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
@@ -16,6 +29,7 @@
     "gulp-uglify": "^1.4.2",
     "gulp-watch": "^4.3.5",
     "ractivate": "^0.2.0",
+    "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
@@ -23,6 +37,7 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "material-design-lite": "^1.0.5",
-    "ractive": "^0.7.3"
+    "ractive": "^0.7.3",
+    "ractive-adaptors-backbone": "^0.3.0"
   }
 }
