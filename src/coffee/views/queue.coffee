@@ -28,12 +28,14 @@ VideoQueue = Ractive.extend(
       e.preventDefault()
     )
     @el.addEventListener("drop", (e) =>
+      # TODO: What if not a link dropped?
       @add_video(e.dataTransfer.getData("text/uri-list"))
       # prevent default so the browser doesn't follow the link that was dropped
       e.preventDefault()
     )
 
   add_video: (uri) ->
+    # TODO: What if invalid uri? I.e. not a video link or not a link at all
     url_regex = /watch\?v=([A-Za-z0-9_-]+)$/
     id = uri.match(url_regex)[1]
 
