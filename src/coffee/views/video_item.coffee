@@ -10,7 +10,7 @@ VideoModel = require('coffee/models/video')
 
 VideoItemView = Ractive.extend(
   template: require("templates/video_item.html")
-  adaptors: [BackboneAdaptor]
+  adapt: [BackboneAdaptor]
 )
 
 

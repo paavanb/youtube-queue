@@ -13,7 +13,7 @@ VideoQueue = Ractive.extend(
   isolated: true
   components:
     videoitem: VideoItemView
-  adaptors: [BackboneAdaptor]
+  adapt: [BackboneAdaptor]
   data: ->
     videos: new Backbone.Collection([], {model: VideoModel})
 
