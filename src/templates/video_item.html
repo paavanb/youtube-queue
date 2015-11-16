@@ -1,5 +1,8 @@
 <div class="video-item">
   <img class="video-thumb"
        src="{{video.thumbnails.medium.url}}" />
-  <div> {{video.title}} </div>
+  <a class="video-title" title="{{video.title}}"
+     href="https://www.youtube.com/watch?v={{video.id}}">
+    {{video.title}}
+  </a>
 </div>
