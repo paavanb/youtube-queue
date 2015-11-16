@@ -20,8 +20,7 @@ VideoQueue = Ractive.extend(
     videos: new Backbone.Collection([], {model: VideoModel})
 
   oninit: ->
-    collection = @get('videos')
-    collection.on('update', ->
+    @get('videos').on('update', ->
       Storage.set(
         videos: collection.toJSON()
       )
