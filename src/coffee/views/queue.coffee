@@ -6,6 +6,8 @@ BackboneAdaptor.Backbone = window.Backbone
 VideoModel = require('coffee/models/video')
 VideoItemView = require('coffee/views/video_item')
 YoutubeAPI = require('coffee/utils/api')
+Storage = require('coffee/utils/storage')
+
 
 # View that renders the current list of videos
 VideoQueue = Ractive.extend(
@@ -16,6 +18,19 @@ VideoQueue = Ractive.extend(
   adapt: [BackboneAdaptor]
   data: ->
     videos: new Backbone.Collection([], {model: VideoModel})
+
+  oninit: ->
+    collection = @get('videos')
+    collection.on('update', ->
+      Storage.set(
+        videos: collection.toJSON()
+      )
+    )
+    # First time we load, fetch any videos that were saved before
+    Storage.get('videos')
+      .then((items) =>
+        @get('videos').add(items.videos ? [])
+      )
 
   onrender: ->
     @init_dropping()
