@@ -1,7 +1,7 @@
 Ractive = require("ractive")
 Backbone = require('backbone')
 BackboneAdaptor = require('ractive-adaptors-backbone')
-BackboneAdaptor.Backbone = Backbone
+BackboneAdaptor.Backbone = window.Backbone
 
 VideoModel = require('coffee/models/video')
 VideoItemView = require('coffee/views/video_item')
@@ -15,7 +15,7 @@ VideoQueue = Ractive.extend(
     videoitem: VideoItemView
   adaptors: [BackboneAdaptor]
   data: ->
-    videos: []
+    videos: new Backbone.Collection([], {model: VideoModel})
 
   onrender: ->
     @init_dropping()
@@ -39,7 +39,7 @@ VideoQueue = Ractive.extend(
 
     YoutubeAPI.get_video(id)
       .then((model) =>
-        @get('videos').push(model)
+        @get('videos').add(model)
       )
 )
 
