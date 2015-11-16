@@ -3,6 +3,9 @@
     "description": "Create on-the-fly video playlists and search while watching",
     "version": "1",
     "manifest_version": 2,
+    "permissions": [
+        "storage"
+    ],
     "content_scripts": [
         {
           "matches": ["https://www.youtube.com/*"],
