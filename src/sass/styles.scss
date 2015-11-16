@@ -23,11 +23,24 @@
   }
 }
 
-.video-thumb {
-  height: 65px;
-}
-
 .video-item {
+  width: 116px;
   margin: 0px 5px;
   float: left;
+
+  .video-thumb {
+    width: 100%;
+  }
+
+  .video-title {
+    font-size: 13px;
+    // Make sure the text is truncated with an ellipsis
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
+
+
