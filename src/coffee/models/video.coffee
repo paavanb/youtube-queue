@@ -15,5 +15,8 @@ class VideoModel extends Backbone.Model
       maxres:
         url: ''
 
+  initialize: ->
+    @set('href', "https://www.youtube.com/watch?v=#{@get('id')}")
+
 
 module.exports = VideoModel
