@@ -20,7 +20,9 @@ class YoutubeAPI
     ).then((response) ->
       # TODO If request fails?
       item = response.items[0]
-      model_data = _.extend({id: item?.id}, item?.snippet)
+      data =
+        id: item?.id
+      model_data = _.extend(data, item?.snippet)
       return new VideoModel(model_data)
     )
 
