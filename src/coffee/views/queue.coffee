@@ -30,7 +30,7 @@ VideoQueue = Ractive.extend(
     # Save videos to local storage when queue is updated
     @get('videos').on('update', ->
       Storage.set(
-        videos: collection.toJSON()
+        videos: @toJSON()
       )
     )
 
