@@ -15,6 +15,7 @@ gulp.task('browserify', function() {
                 entries: './src/app.js',
                 extensions: ['.coffee'],
                 paths: ['./src'],
+                // Enable sourcemaps!
                 debug: true
             })
             .bundle()
