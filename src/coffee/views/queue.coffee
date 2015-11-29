@@ -66,9 +66,9 @@ VideoQueue = Ractive.extend(
         @get('videos').add(model)
       )
 
-  # Pop the first video off the list and return it
-  pop_video: () ->
-    @get('videos').shift()
+  # Get the first video on the queue
+  first_video: () ->
+    @get('videos').first()
 )
 
 module.exports = VideoQueue
