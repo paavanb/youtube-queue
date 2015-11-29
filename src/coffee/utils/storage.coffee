@@ -17,8 +17,8 @@ class Storage
 
   # Set values in storage
   # If an object is passed in, it will be treated as a key-value map of data to store
-  # If two arguments are passed in, the first must be the string key, and the
-  #   the second argument must be the value to set
+  # If two arguments are passed in, the first will be treated as string key, and the
+  #   the second argument will be treated as the value to set
   @set: () ->
     if arguments.length == 1
       items = arguments[0]
