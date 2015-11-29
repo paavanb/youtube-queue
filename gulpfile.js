@@ -14,7 +14,8 @@ gulp.task('browserify', function() {
     return browserify({
                 entries: './src/app.js',
                 extensions: ['.coffee'],
-                paths: ['./src']
+                paths: ['./src'],
+                debug: true
             })
             .bundle()
             .pipe(source('youtube-queue.js'))
