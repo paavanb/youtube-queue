@@ -21,7 +21,7 @@ gulp.task('browserify', function() {
             .bundle()
             .pipe(source('youtube-queue.js'))
             .pipe(buffer())
-            .pipe(sourcemaps.init())
+            .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest('./extension/js/'))
             .pipe(notify("Task 'browserify' completed."))
