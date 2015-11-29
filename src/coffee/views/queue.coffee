@@ -19,12 +19,13 @@ VideoQueue = Ractive.extend(
 
   data: ->
     videos: new Backbone.Collection([], {model: VideoModel})
+    playing: false
 
   oninit: ->
     # First time we load, fetch any videos that were saved before
     Storage.get('videos')
       .then((items) =>
-        @get('videos').add(items.videos ? [])
+        @load_videos(items.videos ? [])
       )
 
     # Save videos to local storage when queue is updated
@@ -33,6 +34,10 @@ VideoQueue = Ractive.extend(
         videos: @toJSON()
       )
     )
+
+  load_videos: (videos) ->
+    @get('videos').add(videos)
+    @fire('loaded')
 
   onrender: ->
     @init_dropping()
