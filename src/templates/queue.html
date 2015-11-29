@@ -1,5 +1,9 @@
 <div>
   {{#each videos}}
-    <videoitem video="{{.}}"/>
+    {{#if !@index}}
+      <videoitem video="{{.}}" selected={{playing}} />
+    {{else}}
+      <videoitem video="{{.}}"/>
+    {{/if}}
   {{/each}}
 </div>
