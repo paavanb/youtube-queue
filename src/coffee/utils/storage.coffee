@@ -1,3 +1,5 @@
+_ = require('lodash')
+
 # Utility class for fetching and saving to local storage using Promises
 #   (Chrome's storage.local api only supports callbacks)
 class Storage
@@ -13,8 +15,16 @@ class Storage
       )
     )
 
-  # items is a key-value map of data to store
-  @set: (items) ->
+  # Set values in storage
+  # If an object is passed in, it will be treated as a key-value map of data to store
+  # If two arguments are passed in, the first must be the string key, and the
+  #   the second argument must be the value to set
+  @set: () ->
+    if arguments.length == 1
+      items = arguments[0]
+    else
+      items = _.set({}, arguments[0], arguments[1])
+
     new Promise((resolve, reject) ->
       chrome.storage.local.set(items, () ->
         if not chrome.runtime.lastError?
