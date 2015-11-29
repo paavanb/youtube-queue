@@ -26,7 +26,12 @@
 .video-item {
   width: 116px;
   margin: 0px 5px;
+  padding: 5px;
   float: left;
+
+  &.selected {
+    background-color: lightgray;
+  }
 
   .video-thumb {
     width: 100%;
