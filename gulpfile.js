@@ -2,10 +2,12 @@ var browserify = require('browserify')
 var gulp = require('gulp');
 var watch = require('gulp-watch')
 var batch = require('gulp-batch')
+var buffer = require('vinyl-buffer')
 var sass = require('gulp-sass')
 var uglify = require('gulp-uglify')
 var notify = require('gulp-notify')
 var source = require('vinyl-source-stream')
+var sourcemaps = require('gulp-sourcemaps')
 
 
 gulp.task('browserify', function() {
@@ -16,6 +18,9 @@ gulp.task('browserify', function() {
             })
             .bundle()
             .pipe(source('youtube-queue.js'))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest('./extension/js/'))
             .pipe(notify("Task 'browserify' completed."))
 })
