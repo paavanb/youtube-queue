@@ -62,6 +62,8 @@ QueueWidget = Ractive.extend(
         window.location.href = video.get('href')
       else
         @set_player_hooks()
+    else
+      @fire('pause-queue')
 
   go_to_next_video: ->
     next_video = @queue.next_video()
