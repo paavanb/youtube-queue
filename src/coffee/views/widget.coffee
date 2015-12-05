@@ -16,21 +16,32 @@ QueueWidget = Ractive.extend(
   oninit: ->
     @queue = @findComponent('videoqueue')
 
-    Storage.get('playing').then((items) =>
-      @set('playing', items.playing ? false)
+    Storage.get('playing')
+      .then((items) =>
+        playing = items.playing ? false
+        @set('playing', playing)
+
+        # If we loaded the page and we're in play mode, play the first video. 
+        # TODO: We should probably warn that we're redirecting, guaranteed people will forget
+        # that the queue is on and get confused by the redirect
+        if playing
+          @fire('play-queue')
     )
 
     @on('play-queue', () =>
-      video = @queue.first_video()
-      @go_to_video(video)
-      Storage.set('playing', true).then(=>
-        @set('playing', true)
+      @set_playing(true)
+        .then(=>
+          video = @queue.first_video()
+          @go_to_video(video)
+          # Set player hooks in case we're already on the page
+          @set_player_hooks()
       )
     )
 
     @on('pause-queue', () =>
-      Storage.set('playing', false).then(=>
-        @set('playing', false)
+      @set_playing(false)
+        .then(=>
+          @destroy_player_hooks()
       )
     )
 
@@ -47,11 +58,23 @@ QueueWidget = Ractive.extend(
     if video and window.location.href != video.get('href')
       window.location.href = video.get('href')
 
+  go_to_next_video: =>
+    next_video = @queue.next_video()
+    @go_to_video(next_video)
+
   set_player_hooks: ->
-    $('video').on('ended', () => 
-      next_video = @queue.next_video()
-      if next_video
-        @go_to_video(next_video)
+    $('video').on('ended', @go_to_next_video)
+
+  destroy_player_hooks: ->
+    video_el = $('video')
+    if video_el.length
+      video_el.off('ended', @go_to_next_video)
+
+  # Sets the playing value in chrome's local storage as well as on this instance's data
+  #  Returns a promise.
+  set_playing: (value) ->
+    Storage.set('playing', value).then(=>
+      @set('playing', value)
     )
 )
 
