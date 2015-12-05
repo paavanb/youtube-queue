@@ -1,3 +1,4 @@
+$ = require('jquery')
 Ractive = require("ractive")
 
 VideoQueue = require('coffee/views/queue')
@@ -19,27 +20,39 @@ QueueWidget = Ractive.extend(
       @set('playing', items.playing ? false)
     )
 
-    @on('play-queue', () ->
+    @on('play-queue', () =>
       video = @queue.first_video()
-      window.location.href = video.get('href')
+      @go_to_video(video)
       Storage.set('playing', true).then(=>
         @set('playing', true)
       )
     )
 
-    @on('pause-queue', () ->
+    @on('pause-queue', () =>
       Storage.set('playing', false).then(=>
         @set('playing', false)
       )
     )
 
     @queue.on('loaded', () =>
-      if @get('playing') and window.location.href == @queue.first_video()?.get('href')
+      if @get('playing')
+        @go_to_video(@queue.first_video())
         @set_player_hooks()
     )
 
+  # Go to the url of the video represented by the video model
+  #   If we're already on the video's page, do nothing.
+  #   TODO: What if additional query params are on the video URL? Like time info. Shouldn't redirect.
+  go_to_video: (video) ->
+    if video and window.location.href != video.get('href')
+      window.location.href = video.get('href')
+
   set_player_hooks: ->
-    debugger
+    $('video').on('ended', () => 
+      next_video = @queue.next_video()
+      if next_video
+        @go_to_video(next_video)
+    )
 )
 
 module.exports = QueueWidget
