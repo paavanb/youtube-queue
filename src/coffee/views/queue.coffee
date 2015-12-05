@@ -69,6 +69,12 @@ VideoQueue = Ractive.extend(
   # Get the first video on the queue
   first_video: () ->
     @get('videos').first()
+
+  # Drop the first video on the queue and return the next one
+  next_video: ->
+    @get('videos').shift()
+    @first_video()
+
 )
 
 module.exports = VideoQueue
