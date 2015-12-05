@@ -6,6 +6,10 @@ Storage = require('coffee/utils/storage')
 
 # Must use Ractive.extend if we want components to work
 QueueWidget = Ractive.extend(
+  ui:
+    video: 'video'
+    autoplay: '#autoplay-checkbox'
+
   template: require("templates/widget.html")
   data: ->
     playing: false
@@ -26,8 +30,6 @@ QueueWidget = Ractive.extend(
       @set_playing(true)
         .then(=>
           @go_to_video(@queue.first_video())
-          # Set player hooks in case we're already on the page
-          @set_player_hooks()
       )
     )
 
@@ -46,7 +48,6 @@ QueueWidget = Ractive.extend(
         video = @queue.first_video()
         if video
           @go_to_video(video)
-          @set_player_hooks()
         else
           # No more videos to play
           @fire('pause-queue')
@@ -56,20 +57,35 @@ QueueWidget = Ractive.extend(
   #   If we're already on the video's page, do nothing.
   #   TODO: What if additional query params are on the video URL? Like time info. Shouldn't redirect.
   go_to_video: (video) ->
-    if video and window.location.href != video.get('href')
-      window.location.href = video.get('href')
+    if video
+      if window.location.href != video.get('href')
+        window.location.href = video.get('href')
+      else
+        @set_player_hooks()
 
-  go_to_next_video: =>
+  go_to_next_video: ->
     next_video = @queue.next_video()
     @go_to_video(next_video)
 
   set_player_hooks: ->
-    $('video').on('ended', @go_to_next_video)
+    @disable_autoplay()
+    $(@ui.video).on('ended', @go_to_next_video.bind(this))
 
   destroy_player_hooks: ->
     video_el = $('video')
     if video_el.length
-      video_el.off('ended', @go_to_next_video)
+      video_el.off('ended', @go_to_next_video.bind(this))
+
+  # Disable youtube autoplay. Autoplaying masks the video ended event, making it impossible
+  #   to go to the next video
+  disable_autoplay: ->
+    checkbox = $(@ui.autoplay)
+    if checkbox.prop('checked')
+      # TODO Gross hack, perhaps show a popover to be like "yo we're switching this off for you"
+      setTimeout(->
+        checkbox.click()
+      , 5000)
+
 
   # Sets the playing value in chrome's local storage as well as on this instance's data
   #  Returns a promise.
