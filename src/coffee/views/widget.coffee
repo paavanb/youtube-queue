@@ -43,8 +43,13 @@ QueueWidget = Ractive.extend(
       # TODO: We should probably warn that we're redirecting, guaranteed people will forget
       # that the queue is on and get confused by the redirect
       if @get('playing')
-        @go_to_video(@queue.first_video())
-        @set_player_hooks()
+        video = @queue.first_video()
+        if video
+          @go_to_video(video)
+          @set_player_hooks()
+        else
+          # No more videos to play
+          @fire('pause-queue')
     )
 
   # Go to the url of the video represented by the video model
