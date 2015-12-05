@@ -20,19 +20,12 @@ QueueWidget = Ractive.extend(
       .then((items) =>
         playing = items.playing ? false
         @set('playing', playing)
-
-        # If we loaded the page and we're in play mode, play the first video. 
-        # TODO: We should probably warn that we're redirecting, guaranteed people will forget
-        # that the queue is on and get confused by the redirect
-        if playing
-          @fire('play-queue')
     )
 
     @on('play-queue', () =>
       @set_playing(true)
         .then(=>
-          video = @queue.first_video()
-          @go_to_video(video)
+          @go_to_video(@queue.first_video())
           # Set player hooks in case we're already on the page
           @set_player_hooks()
       )
@@ -46,6 +39,9 @@ QueueWidget = Ractive.extend(
     )
 
     @queue.on('loaded', () =>
+      # If we loaded the page and we're in play mode, play the first video. 
+      # TODO: We should probably warn that we're redirecting, guaranteed people will forget
+      # that the queue is on and get confused by the redirect
       if @get('playing')
         @go_to_video(@queue.first_video())
         @set_player_hooks()
