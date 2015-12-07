@@ -48,4 +48,20 @@
   }
 }
 
+// Thumbnail Bootstrapping classes
+.contains-addto:hover {
+  .video-actions.ytq-add-to-queue {
+    right: 25px;
+  }
+}
 
+button.ytq-add-to-queue {
+  width: 5px;
+  height: 22px;
+}
+
+.ytq-add-to-queue-icon {
+  position: relative;
+  right: 11px;
+  bottom: 2px;
+}
