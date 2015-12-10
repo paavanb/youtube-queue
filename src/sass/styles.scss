@@ -58,6 +58,11 @@
 button.ytq-add-to-queue {
   width: 5px;
   height: 22px;
+  color: rgb(105, 105, 105);
+
+  &:hover {
+    color: rgb(77, 77, 77);
+  }
 }
 
 .ytq-add-to-queue-icon {
