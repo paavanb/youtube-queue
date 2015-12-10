@@ -19,7 +19,11 @@ class ThumbnailBootstrapper
     # These thumbnails exist on videos like on the home page
     thumbnails = $(".yt-lockup-thumbnail.contains-addto")
     for thumbnail in thumbnails
-      new AddToQueueButton({el: thumbnail})
+      video_link = $("a", thumbnail).attr('href')
+      new AddToQueueButton(
+        el: thumbnail
+        href: video_link
+      )
 
 
 module.exports = ThumbnailBootstrapper
