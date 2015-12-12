@@ -5,6 +5,11 @@ Ractive = require('ractive')
 AddToQueueButton = Ractive.extend(
   template: require('templates/thumbnail_add_to_queue.html')
   append: true
+
+  oncomplete: ->
+    $(@find('button')).on('click', =>
+      @fire('add-to-queue', @get('href'))
+    )
 )
 
 
@@ -15,15 +20,29 @@ class ThumbnailBootstrapper
 
   # Attempt to add an "add to queue" button to all video thumbnails on the page
   bootstrap: ->
-    # Approach 1
-    # These thumbnails exist on videos like on the home page
-    thumbnails = $(".yt-lockup-thumbnail.contains-addto")
+    thumbnails = @_get_thumbnails()
     for thumbnail in thumbnails
       video_link = $("a", thumbnail).attr('href')
-      new AddToQueueButton(
+      button = new AddToQueueButton(
         el: thumbnail
-        href: video_link
+        data:
+          href: video_link
       )
+
+      button.on('add-to-queue', (href) =>
+        @queue_widget.add_video(href)
+      )
+
+  _get_thumbnails: ->
+    # Approach 1
+    # These thumbnails exist on videos like on the home page
+    thumbnails = $(".yt-lockup-thumbnail.contains-addto").toArray()
+
+    # Approach 2
+    # These thumbnails exist on the side when playing a video (related videos section)
+    thumbnails = thumbnails.concat($(".thumb-wrapper").toArray())
+
+    thumbnails
 
 
 module.exports = ThumbnailBootstrapper
