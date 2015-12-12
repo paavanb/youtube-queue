@@ -55,6 +55,19 @@
   }
 }
 
+// Related video thumbnails
+.related-list-item:hover {
+  // If the show-video-time class is applied, don't show the add button 
+  //   This matches the behavior of the watch later link
+  &.show-video-time .video-actions.ytq-add-to-queue {
+    right: -60px;
+  }
+
+  .video-actions.ytq-add-to-queue {
+    right: 25px;
+  }
+}
+
 button.ytq-add-to-queue {
   width: 5px;
   height: 22px;
