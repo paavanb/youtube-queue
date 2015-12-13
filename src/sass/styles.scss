@@ -54,6 +54,12 @@
     right: 25px;
   }
 }
+// Don't leave the button showing just because it's focused
+.contains-addto:not(:hover) {
+  .video-actions.ytq-add-to-queue:focus {
+    right: -60px;
+  }
+}
 
 // Related video thumbnails
 .related-list-item:hover {
@@ -62,9 +68,15 @@
   &.show-video-time .video-actions.ytq-add-to-queue {
     right: -60px;
   }
-
-  .video-actions.ytq-add-to-queue {
+  &:not(.show-video-time) .video-actions.ytq-add-to-queue {
     right: 25px;
+  }
+}
+
+// Don't leave the button showing just because it's focused
+.related-list-item:not(:hover) {
+  .video-actions.ytq-add-to-queue:focus {
+    right: -60px;
   }
 }
 
