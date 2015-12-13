@@ -6,6 +6,7 @@ AddToQueueButton = Ractive.extend(
   template: require('templates/thumbnail_add_to_queue.html')
   append: true
 
+  # TODO: Some sort of reaction when the button is pressed, like the Watch Later button?
   oncomplete: ->
     $(@find('button')).on('click', =>
       @fire('add-to-queue', @get('href'))
