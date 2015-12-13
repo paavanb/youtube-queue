@@ -1,3 +1,5 @@
+@import 'thumbnails';
+
 .frozen-footer {
   position: fixed;
   bottom: 0px;
@@ -46,52 +48,4 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-}
-
-// Thumbnail Bootstrapping classes
-.contains-addto:hover {
-  .video-actions.ytq-add-to-queue {
-    right: 25px;
-  }
-}
-// Don't leave the button showing just because it's focused
-.contains-addto:not(:hover) {
-  .video-actions.ytq-add-to-queue:focus {
-    right: -60px;
-  }
-}
-
-// Related video thumbnails
-.related-list-item:hover {
-  // If the show-video-time class is applied, don't show the add button 
-  //   This matches the behavior of the watch later link
-  &.show-video-time .video-actions.ytq-add-to-queue {
-    right: -60px;
-  }
-  &:not(.show-video-time) .video-actions.ytq-add-to-queue {
-    right: 25px;
-  }
-}
-
-// Don't leave the button showing just because it's focused
-.related-list-item:not(:hover) {
-  .video-actions.ytq-add-to-queue:focus {
-    right: -60px;
-  }
-}
-
-button.ytq-add-to-queue {
-  width: 5px;
-  height: 22px;
-  color: rgb(105, 105, 105);
-
-  &:hover {
-    color: rgb(77, 77, 77);
-  }
-}
-
-.ytq-add-to-queue-icon {
-  position: relative;
-  right: 11px;
-  bottom: 2px;
 }
