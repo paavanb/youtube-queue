@@ -12,6 +12,12 @@
   width: 100%;
 }
 
+#queue-widget {
+  .mdl-grid {
+    padding-top: 0px;
+  }
+}
+
 .mdl-card {
   &.queue-card {
     min-height: 100px;
@@ -27,6 +33,7 @@
 
 .video-item {
   width: 116px;
+  height: 100px;
   margin: 0px 5px;
   padding: 5px;
   float: left;
