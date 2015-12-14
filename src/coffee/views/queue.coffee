@@ -35,6 +35,11 @@ VideoQueue = Ractive.extend(
       )
     )
 
+    @on('videoitem.delete-video', (event) =>
+      video_id = event.component.get('video').id
+      @get('videos').remove(video_id)
+    )
+
   load_videos: (videos) ->
     @get('videos').add(videos)
     @fire('loaded')
