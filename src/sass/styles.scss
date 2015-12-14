@@ -18,6 +18,7 @@ $dark-hover-color: #ECECEC;
 #queue-widget {
   .mdl-grid {
     padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
 
@@ -28,6 +29,7 @@ $dark-hover-color: #ECECEC;
   margin-bottom: 0px;
   padding-top: 10px;
   padding-bottom:10px;
+  background-color: #DDD;
 }
 
 .mdl-card {
@@ -51,6 +53,7 @@ $dark-hover-color: #ECECEC;
   margin: 0px 5px;
   padding: 5px;
   white-space: normal;
+  background-color: white;
 
   &.selected {
     background-color: lightgray;
