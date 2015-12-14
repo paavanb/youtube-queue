@@ -21,6 +21,15 @@ $dark-hover-color: #ECECEC;
   }
 }
 
+#video-container {
+  white-space: nowrap;
+  overflow: scroll;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom:10px;
+}
+
 .mdl-card {
   &.queue-card {
     min-height: 100px;
@@ -36,11 +45,12 @@ $dark-hover-color: #ECECEC;
 
 .video-item {
   position: relative;
+  display: inline-block;
   width: 116px;
   height: 100px;
   margin: 0px 5px;
   padding: 5px;
-  float: left;
+  white-space: normal;
 
   &.selected {
     background-color: lightgray;
