@@ -57,10 +57,10 @@ $dark-hover-color: #ECECEC;
   background-color: white;
 
   &.selected {
-    background-color: lightgray;
+    background-color: #F2908B;
   }
 
-  &:hover {
+  &:hover:not(.selected) {
     background-color: $hover-color;
   }
 
