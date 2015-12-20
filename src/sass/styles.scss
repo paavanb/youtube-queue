@@ -81,6 +81,12 @@ $dark-hover-color: #ECECEC;
   &:not(:hover) .delete-video-item {
     display: none;
   }
+
+  // Don't show delete button if currently selected
+  &.selected .delete-video-item {
+    display: none;
+  }
+
   .delete-video-item {
     position: absolute;
     z-index: 1;
