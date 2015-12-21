@@ -27,10 +27,18 @@ $dark-hover-color: #ECECEC;
   overflow: scroll;
   margin-top: 0px;
   margin-bottom: 0px;
+  margin-left: 0px;
   padding-top: 10px;
   padding-bottom:10px;
   padding-left: 10px;
   background-color: #DDD;
+}
+
+#queue-controls {
+  margin: 0px;
+  padding: 10px;
+  box-shadow: 0 0 10px grey;
+  z-index: 2;
 }
 
 .mdl-card {
