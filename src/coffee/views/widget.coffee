@@ -40,6 +40,10 @@ QueueWidget = Ractive.extend(
       )
     )
 
+    @on('skip-video', () =>
+      @go_to_video(@queue.next_video())
+    )
+
     @queue.on('loaded', () =>
       # If we loaded the page and we're in play mode, play the first video. 
       # TODO: We should probably warn that we're redirecting, guaranteed people will forget
