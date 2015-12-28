@@ -30,6 +30,8 @@ QueueWidget = Ractive.extend(
       @set_playing(true)
         .then(=>
           @go_to_video(@queue.first_video())
+          # In case we're already on the page
+          $(@ui.video)[0].play()
       )
     )
 
@@ -37,6 +39,7 @@ QueueWidget = Ractive.extend(
       @set_playing(false)
         .then(=>
           @destroy_player_hooks()
+          $(@ui.video)[0].pause()
       )
     )
 
