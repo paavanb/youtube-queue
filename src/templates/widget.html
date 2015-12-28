@@ -1,6 +1,6 @@
 <div id="queue-widget" class="mdl-card mdl-shadow--16dp queue-card frozen-footer">
-  <div class="mdl-grid full-width">
-    <div id="queue-controls" class="mdl-cell mdl-cell--1-col">
+  <div class="full-width">
+    <div id="queue-controls" class="">
       {{#if playing}}
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
                 on-click="pause-queue">
@@ -13,7 +13,7 @@
         </button>
       {{/if}}
     </div>
-    <div id="video-container" class="mdl-cell mdl-cell--11-col">
+    <div id="video-container" class="">
       <videoqueue playing={{playing}} />
     </div>
   </div>

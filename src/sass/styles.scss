@@ -35,10 +35,13 @@ $dark-hover-color: #ECECEC;
 }
 
 #queue-controls {
+  float: left;
+  position: relative;  // so box-shadow works
+  box-shadow: 0 0 10px grey;
   margin: 0px;
   padding: 10px;
-  box-shadow: 0 0 10px grey;
   z-index: 2;
+  height: 110px;  // hardcoded height
 }
 
 .mdl-card {
