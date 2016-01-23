@@ -107,8 +107,7 @@ $channel-color: rgb(118, 118, 118);
 
       transition: opacity 0.5s;
 
-
-      &.hidden {
+      &.hide {
         opacity: 0;
       }
 
