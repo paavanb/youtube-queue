@@ -45,6 +45,9 @@ class ThumbnailBootstrapper
 
     # Approach 3
     # These thumbnails exist on a channel's landing page
+    # TODO Oh man, if people navigate to the "Videos" page of a channel,
+    #   It's a SPA, so the page isn't actually refreshed. So the thumbnail button
+    #   isn't added. 
     thumbnails = thumbnails.concat($(".yt-lockup-thumbnail .contains-addto").toArray())
 
     return thumbnails
