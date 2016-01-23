@@ -6,16 +6,16 @@
                 on-click="pause-queue">
           <i class="material-icons">pause</i>
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
-                on-click="skip-video">
-          <i class="material-icons">skip_next</i>
-        </button>
       {{else}}
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
                 on-click="play-queue">
           <i class="material-icons">play_arrow</i>
         </button>
       {{/if}}
+      <button id='skip-video-btn' class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+              on-click="skip-video">
+        <i class="material-icons">skip_next</i>
+      </button>
     </div>
     <div id="video-container" class="">
       <videoqueue playing={{playing}} />

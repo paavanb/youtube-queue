@@ -1,5 +1,10 @@
 <div id='video-item-{{video.id}}'
-     class="video-item {{#if selected}}selected{{else}}sortable{{/if}} mdl-shadow--4dp">
+     class="video-item 
+       {{#if selected}}
+         selected mdl-shadow--2dp
+       {{else}}
+         sortable mdl-shadow--4dp
+       {{/if}} ">
   <span class='delete-video-item mdl-shadow--4dp'
         on-click='delete-video'>
     <i class="material-icons">close</i>
