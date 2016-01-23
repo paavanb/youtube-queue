@@ -71,10 +71,14 @@ $channel-color: rgb(118, 118, 118);
   white-space: normal;
   background-color: white;
 
+  transition: background-color 0.5s;
+
   &.selected {
     background-color: #F2908B;
   }
 
+  // TODO The hover color gets caught up in the background color transition
+  //  It should change color immediately
   &:hover:not(.selected) {
     background-color: $hover-color;
   }
