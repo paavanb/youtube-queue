@@ -13,13 +13,11 @@
      href="https://www.youtube.com/watch?v={{video.id}}">
     <span class="video-thumb">
       <img src="{{video.thumbnails.medium.url}}" />
-      {{#if selected}}
-        <span class="thumb-overlay">
-          <span>
-            NOW PLAYING
-          </span>
+      <span class="thumb-overlay {{#unless selected}}hidden{{/unless}}">
+        <span>
+          NOW PLAYING
         </span>
-      {{/if}}
+      </span>
     </span>
     <div class="video-title">
       {{video.title}}
