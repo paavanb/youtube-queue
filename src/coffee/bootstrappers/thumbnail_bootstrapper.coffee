@@ -43,7 +43,11 @@ class ThumbnailBootstrapper
     # These thumbnails exist on the side when playing a video (related videos section)
     thumbnails = thumbnails.concat($(".thumb-wrapper").toArray())
 
-    thumbnails
+    # Approach 3
+    # These thumbnails exist on a channel's landing page
+    thumbnails = thumbnails.concat($(".yt-lockup-thumbnail .contains-addto").toArray())
+
+    return thumbnails
 
 
 module.exports = ThumbnailBootstrapper
