@@ -16,6 +16,7 @@ class VideoModel extends Backbone.Model
         url: ''
 
   initialize: ->
+    # TODO Link href to change:id event?
     @set('href', "https://www.youtube.com/watch?v=#{@get('id')}")
 
 

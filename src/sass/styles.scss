@@ -3,6 +3,10 @@
 $hover-color: #F3F3F3;
 $dark-hover-color: #ECECEC;
 
+$title-color: #036;
+$title-hover-color: rgb(22, 122, 198);
+$channel-color: rgb(118, 118, 118);
+
 .frozen-footer {
   position: fixed;
   bottom: 0px;
@@ -79,11 +83,28 @@ $dark-hover-color: #ECECEC;
     width: 100%;
   }
 
-  .video-title {
-    font-size: 13px;
-    // Make sure the text is truncated with an ellipsis
-    width: 100%;
-    display: inline-block;
+  a {
+    .video-title {
+      font-size: 13px;
+      color: $title-color;
+      // Make sure the text is truncated with an ellipsis
+      width: 100%;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &:hover .video-title {
+      text-decoration: none;
+      color: $title-hover-color;
+    }
+  }
+
+  .channel-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: $channel-color;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

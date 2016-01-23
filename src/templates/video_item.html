@@ -3,10 +3,15 @@
         on-click='delete-video'>
     <i class="material-icons">close</i>
   </span>
-  <img class="video-thumb"
-       src="{{video.thumbnails.medium.url}}" />
-  <a class="video-title" title="{{video.title}}"
+  <a title="{{video.title}}"
      href="https://www.youtube.com/watch?v={{video.id}}">
-    {{video.title}}
+    <img class="video-thumb"
+         src="{{video.thumbnails.medium.url}}" />
+    <div class="video-title">
+      {{video.title}}
+    </div>
   </a>
+  <div class="channel-title" title="{{video.channelTitle}}">
+    {{video.channelTitle}}
+  </div>
 </div>
