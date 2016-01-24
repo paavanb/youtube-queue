@@ -1,5 +1,6 @@
 QueueWidget = require('./coffee/queue/views/widget')
 ThumbnailBootstrapper = require('./coffee/queue/bootstrappers/thumbnail_bootstrapper')
+SearchBootstrapper = require('./coffee/search/bootstrappers/search')
 
 var widget = new QueueWidget({
     "el": "body",
@@ -10,6 +11,9 @@ var widget = new QueueWidget({
 new ThumbnailBootstrapper({
     queue_widget: widget
 }).bootstrap()
+
+// Augment the UI with a search widget
+new SearchWidget().bootstrap()
 
 // Inject google fonts for icons
 var link = document.createElement("link");
