@@ -1,5 +1,5 @@
-QueueWidget = require('./coffee/views/widget')
-ThumbnailBootstrapper = require('./coffee/bootstrappers/thumbnail_bootstrapper')
+QueueWidget = require('./coffee/queue/views/widget')
+ThumbnailBootstrapper = require('./coffee/queue/bootstrappers/thumbnail_bootstrapper')
 
 var widget = new QueueWidget({
     "el": "body",

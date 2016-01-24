@@ -2,7 +2,7 @@ $ = require('jquery')
 _ = require('lodash')
 
 config = require('config')
-VideoModel = require('coffee/models/video')
+VideoModel = require('coffee/queue/models/video')
 
 class YoutubeAPI
   @BASE_URL: "https://www.googleapis.com/youtube/v3"

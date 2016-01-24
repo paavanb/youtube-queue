@@ -1,7 +1,7 @@
 $ = require('jquery')
 Ractive = require("ractive")
 
-VideoQueue = require('coffee/views/queue')
+VideoQueue = require('coffee/queue/views/queue')
 Storage = require('coffee/utils/storage')
 
 # Must use Ractive.extend if we want components to work

@@ -6,7 +6,7 @@ BackboneAdaptor = require('ractive-adaptors-backbone')
 #   we got using require(). That's why we pass in window.Backbone
 BackboneAdaptor.Backbone = window.Backbone
 
-VideoModel = require('coffee/models/video')
+VideoModel = require('coffee/queue/models/video')
 
 VideoItemView = Ractive.extend(
   template: require("templates/video_item.html")

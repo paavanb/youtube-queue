@@ -5,8 +5,8 @@ Backbone = require('backbone')
 BackboneAdaptor = require('ractive-adaptors-backbone')
 BackboneAdaptor.Backbone = window.Backbone
 
-VideoModel = require('coffee/models/video')
-VideoItemView = require('coffee/views/video_item')
+VideoModel = require('coffee/queue/models/video')
+VideoItemView = require('coffee/queue/views/video_item')
 YoutubeAPI = require('coffee/utils/api')
 Storage = require('coffee/utils/storage')
 
