@@ -184,3 +184,26 @@ $channel-color: rgb(118, 118, 118);
     }
   }
 }
+
+#searchbox-container {
+  position: relative;
+  margin-left: 5px;
+
+  .mdl-textfield {
+    padding-top: 0px;
+  }
+
+  .mdl-textfield__label {
+    top: 5px;
+  }
+
+  #searchbox-icon {
+    width: 24px;
+    display: inline-block;
+
+    i {
+      position: absolute;
+      top: 3px;
+    }
+  }
+}
