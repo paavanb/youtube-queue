@@ -9,21 +9,23 @@
         on-click='delete-video'>
     <i class="material-icons">close</i>
   </span>
-  <a title="{{video.title}}"
-     href="https://www.youtube.com/watch?v={{video.id}}">
-    <span class="video-thumb">
-      <img src="{{video.thumbnails.medium.url}}" />
-      <span class="thumb-overlay {{#unless selected}}hide{{/unless}}">
-        <span>
-          NOW PLAYING
+  <div class="item-overlay">
+    <a title="{{video.title}}"
+       href="https://www.youtube.com/watch?v={{video.id}}">
+      <span class="video-thumb">
+        <img src="{{video.thumbnails.medium.url}}" />
+        <span class="thumb-overlay {{#unless selected}}hide{{/unless}}">
+          <span>
+            NOW PLAYING
+          </span>
         </span>
       </span>
-    </span>
-    <div class="video-title">
-      {{video.title}}
+      <div class="video-title">
+        {{video.title}}
+      </div>
+    </a>
+    <div class="channel-title" title="{{video.channelTitle}}">
+      {{video.channelTitle}}
     </div>
-  </a>
-  <div class="channel-title" title="{{video.channelTitle}}">
-    {{video.channelTitle}}
   </div>
 </div>
