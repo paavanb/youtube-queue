@@ -9,7 +9,7 @@ BackboneAdaptor.Backbone = window.Backbone
 VideoModel = require('coffee/queue/models/video')
 
 VideoItemView = Ractive.extend(
-  template: require("templates/video_item.html")
+  template: require("templates/queue/video_item.html")
   adapt: [BackboneAdaptor]
   data: ->
     selected: false

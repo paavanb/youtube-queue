@@ -13,7 +13,7 @@ new ThumbnailBootstrapper({
 }).bootstrap()
 
 // Augment the UI with a search widget
-new SearchWidget().bootstrap()
+new SearchBootstrapper().bootstrap()
 
 // Inject google fonts for icons
 var link = document.createElement("link");

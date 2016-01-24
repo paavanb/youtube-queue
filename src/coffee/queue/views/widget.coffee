@@ -11,7 +11,7 @@ QueueWidget = Ractive.extend(
     autoplay: '#autoplay-checkbox'
     skip_button: '#skip-video-btn'
 
-  template: require("templates/widget.html")
+  template: require("templates/queue/widget.html")
   data: ->
     playing: false
 

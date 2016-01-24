@@ -6,7 +6,10 @@ class SearchBootstrapper
   bootstrap: ->
     sidebar = $('#watch7-sidebar-contents')
     if sidebar
-      new SearchWidget(el: sidebar)
+      new SearchWidget(
+        el: sidebar
+        append: true
+      )
 
 
 module.exports = SearchBootstrapper

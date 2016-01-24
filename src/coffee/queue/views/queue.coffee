@@ -13,7 +13,7 @@ Storage = require('coffee/utils/storage')
 
 # View that renders the current list of videos
 VideoQueue = Ractive.extend(
-  template: require("templates/queue.html")
+  template: require("templates/queue/queue.html")
   isolated: true
   components:
     videoitem: VideoItemView
