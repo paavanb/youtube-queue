@@ -123,8 +123,8 @@ $channel-color: rgb(118, 118, 118);
     }
   }
 
-  a {
-    .video-title {
+  div {
+    .video-title a {
       font-size: 13px;
       color: $title-color;
       // Make sure the text is truncated with an ellipsis
@@ -135,7 +135,7 @@ $channel-color: rgb(118, 118, 118);
       text-overflow: ellipsis;
     }
 
-    &:hover .video-title {
+    .video-title:hover a {
       text-decoration: none;
       color: $title-hover-color;
     }

@@ -10,8 +10,7 @@
     <i class="material-icons">close</i>
   </span>
   <div class="item-overlay">
-    <a title="{{video.title}}"
-       href="https://www.youtube.com/watch?v={{video.id}}">
+    <span>
       <span class="video-thumb">
         <img src="{{video.thumbnails.medium.url}}" />
         <span class="thumb-overlay {{#unless selected}}hide{{/unless}}">
@@ -21,9 +20,12 @@
         </span>
       </span>
       <div class="video-title">
-        {{video.title}}
+        <a title="{{video.title}}"
+           href="https://www.youtube.com/watch?v={{video.id}}">
+           {{video.title}}
+        </a>
       </div>
-    </a>
+    </span>
     <div class="channel-title" title="{{video.channelTitle}}">
       {{video.channelTitle}}
     </div>
