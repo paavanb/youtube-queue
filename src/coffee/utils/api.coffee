@@ -1,5 +1,6 @@
 $ = require('jquery')
 _ = require('lodash')
+Backbone = require('backbone')
 
 config = require('config')
 VideoModel = require('coffee/queue/models/video')
@@ -25,6 +26,28 @@ class YoutubeAPI
       model_data = _.extend(data, item?.snippet)
       return new VideoModel(model_data)
     )
+
+  @search: (query) ->
+    $.ajax(
+      url: "#{@BASE_URL}/search"
+      type: 'GET'
+      data: _.extend({}, @params, {
+          q: query
+          part: 'snippet'
+          type: 'video'
+          maxResults: 20
+        })
+    ).then((response) ->
+      items = response.items
+
+      videos = _.map(items, (video) ->
+        new VideoModel(_.extend({id: video.id}, video.snippet))
+      )
+
+      new Backbone.Collection(videos)
+    )
+
+
 
 
 module.exports = YoutubeAPI
