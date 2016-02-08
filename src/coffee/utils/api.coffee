@@ -37,14 +37,34 @@ class YoutubeAPI
           type: 'video'
           maxResults: 20
         })
-    ).then((response) ->
+    ).then((response) =>
+      # Combine statistics into each video
       items = response.items
 
       videos = _.map(items, (video) ->
-        new VideoModel(_.extend({id: video.id}, video.snippet))
+        _.extend({id: video?.id?.videoId}, video.snippet)
       )
 
-      new Backbone.Collection(videos)
+      video_ids = _.pluck(videos, 'id').join(',')
+
+      return $.ajax(
+        url: "#{@BASE_URL}/videos", 
+        data: _.extend({}, @params, 
+            part: 'statistics'
+            id: video_ids
+          )
+      ).then((response) ->
+        items = response.items
+
+        # Mix statistics into each video
+        _.chain(_.zip(videos, items))
+          .map((tuple) ->
+            _.extend({}, tuple[0], {statistics: tuple[1].statistics})
+          )
+          .value()
+      ).then((video_result_list) ->
+        new Backbone.Collection(video_result_list)
+      )
     )
 
 
