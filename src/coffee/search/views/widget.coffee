@@ -28,6 +28,7 @@ SearchWidget = Ractive.extend(
     search_query = search_box.value
     YoutubeAPI.search(search_query)
       .then((videos) =>
+        @set('videos', @get('videos').reset())
         @set('videos', videos)
 
         related_videos = $('#watch7-sidebar-modules .watch-sidebar-section .watch-sidebar-body')[2]

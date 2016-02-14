@@ -22,33 +22,43 @@ class ThumbnailBootstrapper
   # Attempt to add an "add to queue" button to all video thumbnails on the page
   bootstrap: ->
     thumbnails = @_get_thumbnails()
-    for thumbnail in thumbnails
-      video_link = $("a", thumbnail).attr('href')
-      button = new AddToQueueButton(
-        el: thumbnail
-        data:
-          href: video_link
-      )
+    @bootstrap_thumbnail(thumbnail) for thumbnail in thumbnails 
 
-      button.on('add-to-queue', (href) =>
-        @queue_widget.add_video(href)
-      )
+  bootstrap_thumbnail: (thumbnail) =>
+    video_link = $("a", thumbnail).attr('href')
+    button = new AddToQueueButton(
+      el: thumbnail
+      data:
+        href: video_link
+    )
+
+    button.on('add-to-queue', (href) =>
+      @queue_widget.add_video(href)
+    )
 
   _get_thumbnails: ->
-    # Approach 1
-    # These thumbnails exist on videos like on the home page
-    thumbnails = $(".yt-lockup-thumbnail.contains-addto").toArray()
+    thumbnail_selectors = [
+      # These thumbnails exist on videos like on the home page
+      ".yt-lockup-thumbnail.contains-addto",
+      # These thumbnails exist on the side when playing a video (related videos section)
+      ".thumb-wrapper",
+      # These thumbnails exist on a channel's landing page
+      # TODO Oh man, if people navigate to the "Videos" page of a channel,
+      #   It's a SPA, so the page isn't actually refreshed. So the thumbnail button
+      #   isn't added. 
+      ".yt-lockup-thumbnail .contains-addto"
+    ]
+    thumbnails = []
+    for selector in thumbnail_selectors
+      thumbnails = thumbnails.concat($(selector).toArray())
 
-    # Approach 2
-    # These thumbnails exist on the side when playing a video (related videos section)
-    thumbnails = thumbnails.concat($(".thumb-wrapper").toArray())
-
-    # Approach 3
-    # These thumbnails exist on a channel's landing page
-    # TODO Oh man, if people navigate to the "Videos" page of a channel,
-    #   It's a SPA, so the page isn't actually refreshed. So the thumbnail button
-    #   isn't added. 
-    thumbnails = thumbnails.concat($(".yt-lockup-thumbnail .contains-addto").toArray())
+    # The page might update dynamically, so we have to catch new videos that may have appeared
+    $('body').on('mouseover', selector, (event) =>
+      thumbnail = event.currentTarget
+      # Attach the add to queue button if we haven't already
+      if not $('.ytq-add-to-queue', thumbnail).length
+        @bootstrap_thumbnail(thumbnail)
+    ) for selector in thumbnail_selectors
 
     return thumbnails
 

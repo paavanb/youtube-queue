@@ -1,6 +1,5 @@
 SearchWidget = require('coffee/search/views/widget')
 
-
 # Bootstrap the video player page to add the search widget
 class SearchBootstrapper
   bootstrap: ->
