@@ -37,6 +37,12 @@ $channel-color: rgb(118, 118, 118);
   padding-bottom:10px;
   padding-left: 10px;
   background-color: #DDD;
+
+  // Fix jquery sortable shifting all items downwards during sort
+  .ui-sortable-placeholder {
+    display: inline-block;
+    height: 1px;
+  }
 }
 
 #queue-controls {
