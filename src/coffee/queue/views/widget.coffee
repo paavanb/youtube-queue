@@ -9,7 +9,7 @@ QueueWidget = Ractive.extend(
   ui:
     video: 'video'
     autoplay: '#autoplay-checkbox'
-    skip_button: '#skip-video-btn'
+    skip_button: '#skip-btn'
 
   template: require("templates/queue/widget.html")
   data: ->
@@ -106,8 +106,6 @@ QueueWidget = Ractive.extend(
     Storage.set('playing', value).then(=>
       @set('playing', value)
       return value
-    ).then((playing) =>
-      $(@ui.skip_button).prop('disabled', not playing)
     )
   )
 
