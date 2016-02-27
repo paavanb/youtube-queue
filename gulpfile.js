@@ -9,6 +9,21 @@ var notify = require('gulp-notify')
 var source = require('vinyl-source-stream')
 var sourcemaps = require('gulp-sourcemaps')
 
+// Handle errors gracefully with a notification
+handleErrors = function() {
+
+  var args = Array.prototype.slice.call(arguments);
+
+  // Send error to notification center with gulp-notify
+  notify.onError({
+    title: "Compile Error",
+    message: "<%= error %>"
+  }).apply(this, args);
+
+  // Keep gulp from hanging on this task
+  this.emit('end');
+};
+
 
 gulp.task('browserify', function() {
     return browserify({
@@ -19,6 +34,7 @@ gulp.task('browserify', function() {
                 debug: true
             })
             .bundle()
+            .on('error', handleErrors)
             .pipe(source('youtube-queue.js'))
             .pipe(buffer())
             .pipe(sourcemaps.init({loadMaps: true}))
@@ -42,6 +58,7 @@ gulp.task('watch', function() {
 gulp.task('sass', function() {
     return gulp.src("./src/sass/*.scss")
                .pipe(sass())
+               .on('error', handleErrors)
                .pipe(gulp.dest('./extension/css/'))
                .pipe(notify("Task 'sass' completed."))
 })
