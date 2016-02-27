@@ -6,6 +6,7 @@ $dark-hover-color: #ECECEC;
 $title-color: #036;
 $title-hover-color: rgb(22, 122, 198);
 $channel-color: rgb(118, 118, 118);
+$youtube-red: #cc181e;
 
 .frozen-footer {
   position: fixed;
@@ -53,6 +54,27 @@ $channel-color: rgb(118, 118, 118);
   padding: 10px;
   z-index: 2;
   height: 110px;  // hardcoded height
+  background-color: $youtube-red;
+
+  #play-btn {
+    &:hover {
+      background-color: rgba(158, 158, 158, 0.5);
+    }
+
+    i {
+      color: white;
+    }
+  }
+
+  #skip-btn {
+    &:hover {
+      background-color: rgba(158, 158, 158, 0.5);
+    }
+
+    i {
+      color: white;
+    }
+  }
 }
 
 .mdl-card {
