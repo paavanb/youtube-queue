@@ -6,6 +6,7 @@ $dark-hover-color: #ECECEC;
 $title-color: #036;
 $title-hover-color: rgb(22, 122, 198);
 $channel-color: rgb(118, 118, 118);
+$channel-color-invert: rgb(200, 200, 200);
 $youtube-red: #cc181e;
 
 .frozen-footer {
@@ -104,7 +105,18 @@ $youtube-red: #cc181e;
   }
 
   &.selected .item-overlay {
-    background-color: #F2908B;
+    background-color: $youtube-red;
+    a {
+      color: white;
+
+      &:hover {
+        color: $channel-color-invert;
+      }
+    }
+
+    .channel-title {
+      color: $channel-color-invert;
+    }
   }
 
   &:hover:not(.selected) {
