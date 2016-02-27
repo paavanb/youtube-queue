@@ -56,9 +56,9 @@ $youtube-red: #cc181e;
   height: 110px;  // hardcoded height
   background-color: $youtube-red;
 
-  #play-btn {
+  .queue-action-button {
     &:hover {
-      background-color: rgba(158, 158, 158, 0.5);
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     i {
@@ -66,14 +66,12 @@ $youtube-red: #cc181e;
     }
   }
 
-  #skip-btn {
-    &:hover {
-      background-color: rgba(158, 158, 158, 0.5);
-    }
+  #play-btn {
+    height: 58px;
+  }
 
-    i {
-      color: white;
-    }
+  #skip-btn {
+    height: 58px;
   }
 }
 

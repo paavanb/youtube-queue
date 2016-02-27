@@ -3,19 +3,19 @@
     <div id="queue-controls" class="">
       <div>
         {{#if playing}}
-          <button id='play-btn' class="mdl-button"
+          <button id='play-btn' class="queue-action-button mdl-button"
                   on-click="pause-queue">
             <i class="material-icons">pause</i>
           </button>
         {{else}}
-          <button id='play-btn' class="mdl-button"
+          <button id='play-btn' class="queue-action-button mdl-button"
                   on-click="play-queue">
             <i class="material-icons">play_arrow</i>
           </button>
         {{/if}}
       </div>
       <div>
-        <button id='skip-btn' class="mdl-button"
+        <button id='skip-btn' class="queue-action-button mdl-button"
                 on-click="skip-video">
           <i class="material-icons">skip_next</i>
         </button>
