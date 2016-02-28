@@ -109,9 +109,9 @@ $youtube-red: #cc181e;
     a {
       color: white;
 
-      &:hover {
-        color: $channel-color-invert;
-      }
+    }
+    div.video-title:hover a {
+      color: $channel-color-invert;
     }
 
     .channel-title {
