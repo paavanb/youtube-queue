@@ -2,6 +2,12 @@
   <div class="full-width">
     <div id="queue-controls" class="">
       <div>
+        <button id='skip-btn' class="queue-action-button mdl-button"
+                on-click="skip-video">
+          <i class="material-icons">skip_next</i>
+        </button>
+      </div>
+      <div>
         {{#if playing}}
           <button id='play-btn' class="queue-action-button mdl-button"
                   on-click="pause-queue">
@@ -13,12 +19,6 @@
             <i class="material-icons">play_arrow</i>
           </button>
         {{/if}}
-      </div>
-      <div>
-        <button id='skip-btn' class="queue-action-button mdl-button"
-                on-click="skip-video">
-          <i class="material-icons">skip_next</i>
-        </button>
       </div>
     </div>
     <div id="video-container" class="">
