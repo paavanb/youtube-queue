@@ -216,9 +216,11 @@ $youtube-red: #cc181e;
 
     &:hover {
       background-color: $dark-hover-color;
+      cursor: pointer;
 
       i {
         color: #777;
+        cursor: pointer;
       }
     }
   }
