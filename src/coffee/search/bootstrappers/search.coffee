@@ -27,6 +27,8 @@ class SearchBootstrapper
             el: sidebar_related_videos
             append: $('.watch-sidebar-body', sidebar_related_videos)
           )
+          # Force MDL to refresh so it detects the new widget
+          componentHandler.upgradeDom()
       else
         # Sidebar has not been populated yet, wait for more rendering to try again
         window.requestAnimationFrame(@append_widget.bind(this))
