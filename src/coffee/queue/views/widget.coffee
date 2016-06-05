@@ -21,10 +21,23 @@ QueueWidget = Ractive.extend(
   oninit: ->
     @queue = @findComponent('videoqueue')
 
-    Storage.get('playing')
-      .then((items) =>
-        playing = items.playing ? false
-        @set_playing(playing)
+    @queue.on('loaded', () =>
+      Storage.get('playing')
+        .then((items) =>
+          playing = items.playing ? false
+          return @set_playing(playing)
+       ).then((playing) =>
+          # If we loaded the page and we're in play mode, play the first video. 
+          # TODO: We should probably warn that we're redirecting, guaranteed people will forget
+          # that the queue is on and get confused by the redirect
+          if playing
+            video = @queue.first_video()
+            if video
+              @go_to_video(video)
+            else
+              # No more videos to play
+              @fire('pause-queue')
+       )
     )
 
     @on('play-queue', () =>
@@ -46,19 +59,6 @@ QueueWidget = Ractive.extend(
 
     @on('skip-video', () =>
       @go_to_video(@queue.next_video())
-    )
-
-    @queue.on('loaded', () =>
-      # If we loaded the page and we're in play mode, play the first video. 
-      # TODO: We should probably warn that we're redirecting, guaranteed people will forget
-      # that the queue is on and get confused by the redirect
-      if @get('playing')
-        video = @queue.first_video()
-        if video
-          @go_to_video(video)
-        else
-          # No more videos to play
-          @fire('pause-queue')
     )
 
   add_video: (video_uri) ->
