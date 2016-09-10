@@ -89,8 +89,7 @@ VideoQueue = Ractive.extend(
 
   add_video: (uri) ->
     # TODO: What if invalid uri? I.e. not a video link or not a link at all
-    url_regex = /watch\?v=([A-Za-z0-9_-]+)$/
-    id = uri.match(url_regex)[1]
+    id = VideoModel.parse_id(uri)
 
     YoutubeAPI.get_video(id)
       .then((model) =>
