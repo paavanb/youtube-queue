@@ -29,6 +29,7 @@ class ThumbnailBootstrapper
     button = new AddToQueueButton(
       el: thumbnail
       data:
+        add: not @queue_widget.contains_video(VideoModel.parse_id(video_link))
         href: video_link
     )
 
