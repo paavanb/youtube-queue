@@ -1,10 +1,20 @@
 $ = require('jquery')
 Ractive = require('ractive')
 
+VideoModel = require('coffee/queue/models/video')
+
+
 # View that renders a simple "add to queue" button for video thumbnails
 AddToQueueButton = Ractive.extend(
   template: require('templates/queue/thumbnail_add_to_queue.html')
   append: true
+
+  computed:
+    tooltip_text: ->
+      if @get('add')
+        "Add to Queue"
+      else
+        "Remove from Queue"
 
   # TODO: Some sort of reaction when the button is pressed, like the Watch Later button?
   oncomplete: ->
