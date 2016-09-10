@@ -64,6 +64,9 @@ QueueWidget = Ractive.extend(
   add_video: (video_uri) ->
     @queue.add_video(video_uri)
 
+  contains_video: (video_id) ->
+    return @queue.contains_video(video_id)
+
   # Go to the url of the video represented by the video model
   #   If we're already on the video's page, do nothing.
   #   TODO: What if additional query params are on the video URL? Like time info. Shouldn't redirect.

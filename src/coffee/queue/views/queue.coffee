@@ -96,6 +96,10 @@ VideoQueue = Ractive.extend(
         @get('videos').add(model)
       )
 
+  contains_video: (video_id) ->
+    videos = @get('videos')
+    return videos.find((video) -> video.id == video_id)?
+
   # Get the first video on the queue
   first_video: () ->
     @get('videos').first()
