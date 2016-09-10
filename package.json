@@ -40,10 +40,11 @@
   "dependencies": {
     "backbone": "^1.2.3",
     "jquery": "^2.1.4",
-    "jquery-ui": "^1.10.5",
+    "jquery-ui": "1.10.5",
     "lodash": "^3.10.1",
     "material-design-lite": "^1.0.5",
     "ractive": "^0.7.3",
-    "ractive-adaptors-backbone": "^0.3.0"
+    "ractive-adaptors-backbone": "^0.3.0",
+    "underscore": "^1.8.3"
   }
 }
