@@ -7,13 +7,18 @@ var widget = new QueueWidget({
     "append": true
 })
 
-// Augment the UI with buttons to add videos to queue
-new ThumbnailBootstrapper({
-    queue_widget: widget
-}).bootstrap()
+widget.on('videoqueue.loaded', function() {
+    // Augment the UI with buttons to add videos to queue
+    // Must be done after queue loads so that we can correctly display
+    // Add vs Remove icons on videos
+    new ThumbnailBootstrapper({
+        queue_widget: widget
+    }).bootstrap()
 
-// Augment the UI with a search widget
-new SearchBootstrapper().bootstrap()
+    // Augment the UI with a search widget
+    new SearchBootstrapper().bootstrap()
+})
+
 
 // Inject google fonts for icons
 var link = document.createElement("link");
