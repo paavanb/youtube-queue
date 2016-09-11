@@ -9,6 +9,10 @@ AddToQueueButton = Ractive.extend(
   template: require('templates/queue/thumbnail_add_to_queue.html')
   append: true
 
+  data:
+    add: true
+    href: null
+
   computed:
     tooltip_text: ->
       if @get('add')
@@ -41,10 +45,12 @@ class ThumbnailBootstrapper
 
   bootstrap_thumbnail: (thumbnail) =>
     video_link = $("a", thumbnail).attr('href')
+    video_id = VideoModel.parse_id(video_link)
+
     button = new AddToQueueButton(
       el: thumbnail
       data:
-        add: not @queue_widget.contains_video(VideoModel.parse_id(video_link))
+        add: not @queue_widget.contains_video(video_id)
         href: video_link
     )
 
@@ -54,6 +60,11 @@ class ThumbnailBootstrapper
 
     button.on('remove-from-queue', (href) =>
       @queue_widget.remove_video(href)
+    )
+
+    # Update the icon depending on if the video is already in the queue
+    $(thumbnail).on('mouseover', =>
+      button.set('add', not @queue_widget.contains_video(video_id))
     )
 
   _get_thumbnails: ->
