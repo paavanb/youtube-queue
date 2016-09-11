@@ -96,6 +96,11 @@ VideoQueue = Ractive.extend(
         @get('videos').add(model)
       )
 
+  remove_video: (uri) ->
+    # TODO: What if invalid uri? I.e. not a video link or not a link at all
+    id = VideoModel.parse_id(uri)
+    @get('videos').remove(id)
+
   contains_video: (video_id) ->
     videos = @get('videos')
     return videos.find((video) -> video.id == video_id)?

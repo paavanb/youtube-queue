@@ -64,6 +64,9 @@ QueueWidget = Ractive.extend(
   add_video: (video_uri) ->
     @queue.add_video(video_uri)
 
+  remove_video: (video_uri) ->
+    @queue.remove_video(video_uri)
+
   contains_video: (video_id) ->
     return @queue.contains_video(video_id)
 
