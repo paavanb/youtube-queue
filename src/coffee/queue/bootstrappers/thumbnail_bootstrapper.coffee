@@ -19,7 +19,12 @@ AddToQueueButton = Ractive.extend(
   # TODO: Some sort of reaction when the button is pressed, like the Watch Later button?
   oncomplete: ->
     $(@find('button')).on('click', =>
-      @fire('add-to-queue', @get('href'))
+      if @get('add')
+        @fire('add-to-queue', @get('href'))
+      else
+        @fire('remove-from-queue', @get('href'))
+
+      @set('add', not @get('add'))
     )
 )
 
@@ -45,6 +50,10 @@ class ThumbnailBootstrapper
 
     button.on('add-to-queue', (href) =>
       @queue_widget.add_video(href)
+    )
+
+    button.on('remove-from-queue', (href) =>
+      @queue_widget.remove_video(href)
     )
 
   _get_thumbnails: ->
