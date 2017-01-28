@@ -23,7 +23,7 @@ class VideoModel extends Backbone.Model
   Parse the video id out of a uri of the form "/watch?v=ID"
   ###
   @parse_id: (uri) ->
-    url_regex = /watch\?v=([A-Za-z0-9_-]+)$/
+    url_regex = /watch\?v=([A-Za-z0-9_-]+)/
     id = uri.match(url_regex)[1]
     return id
 
