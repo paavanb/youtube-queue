@@ -63,19 +63,4 @@ gulp.task('sass', function() {
                .pipe(notify("Task 'sass' completed."))
 })
 
-gulp.task('material-js', function() {
-    return gulp.src('./node_modules/material-design-lite/material.js')
-            .pipe(uglify())
-            .pipe(gulp.dest('./extension/js/'))
-})
-
-gulp.task('material-css', function() {
-    return gulp.src('./node_modules/material-design-lite/material.css')
-            .pipe(gulp.dest('./extension/css/'))
-})
-
-gulp.task('material', function() {
-    gulp.start('material-js', 'material-css')
-})
-
-gulp.task('default', ['browserify', 'sass', 'material', 'watch'])
+gulp.task('default', ['browserify', 'sass', 'watch'])

@@ -10,13 +10,12 @@
         {
           "matches": ["https://www.youtube.com/*"],
           "js": [
-            "js/material.js",
             "js/youtube-queue.js"
           ],
           "web_accessible_resources": [
             "js/youtube-queue.js.map"
           ],
-          "css": ["css/material.css", "css/styles.css"]
+          "css": ["css/styles.css"]
         }
     ]
 }
